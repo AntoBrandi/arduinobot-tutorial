@@ -1,0 +1,2 @@
+arduinobot_test
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/arduinobot-tutorial/L3 - What is ROS/arduinobot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/arduinobot-tutorial/L3 - What is ROS/arduinobot_ws/install -G Unix Makefiles
