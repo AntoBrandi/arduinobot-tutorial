@@ -6,7 +6,7 @@ from std_msgs.msg import UInt8MultiArray
 # function that publishes a message on the topic ,on which the 
 # arduino is listening
 def publish(msg):
-    pub = rospy.Publisher('servo_actuator', UInt8MultiArray, queue_size=10)
+    pub = rospy.Publisher('servo_actuate', UInt8MultiArray, queue_size=10)
     pub.publish(data=msg)
 
 # a new message has been published on the topic /joint_states
