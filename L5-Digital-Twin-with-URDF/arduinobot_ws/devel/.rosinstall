@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/devel/setup.sh

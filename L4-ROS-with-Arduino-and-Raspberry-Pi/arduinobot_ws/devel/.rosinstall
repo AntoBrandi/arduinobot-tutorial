@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/arduinobot-tutorial/L4 - ROS with Arduino and Raspberry Pi/arduinobot_ws/devel/setup.sh
