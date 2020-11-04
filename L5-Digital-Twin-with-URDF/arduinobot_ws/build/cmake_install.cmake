@@ -126,6 +126,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/build/gtest/cmake_install.cmake")
+  include("/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/build/arduinobot_controller/cmake_install.cmake")
   include("/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/build/arduinobot_description/cmake_install.cmake")
   include("/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/build/arduinobot_test/cmake_install.cmake")
 

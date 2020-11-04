@@ -1,2 +1,2 @@
-arduinobot_description:arduinobot_test
+arduinobot_controller:arduinobot_description:arduinobot_test
 -DCATKIN_DEVEL_PREFIX=/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/arduinobot-tutorial/L5-Digital-Twin-with-URDF/arduinobot_ws/install -G Unix Makefiles
