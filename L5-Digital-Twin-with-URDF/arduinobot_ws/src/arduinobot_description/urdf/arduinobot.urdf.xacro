@@ -28,6 +28,7 @@
         </collision>
     </link> 
 
+
     <link name="base_plate">
         <visual>
             <origin rpy="0 0 0" xyz="-0.39 -0.39 -0.56"/>
@@ -118,7 +119,6 @@
         </collision>
     </link>
 
-
     <link name="tool_link"></link>
 
     
@@ -128,7 +128,7 @@
         <child link="base_link" />
         <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
-    
+       
     <joint name ="joint_1" type="revolute">
         <parent link="base_link"/>
         <child link = "base_plate"/>
@@ -181,61 +181,5 @@
         <child link = "tool_link"/>
         <origin xyz="0 0 0"/>
     </joint>
-
-
-    <!-- Transmissions-->
-    <transmission name="transmission_1">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_1">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_1">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="transmission_2">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_2">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_2">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="transmission_3">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_3">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_3">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-    <transmission name="transmission_4">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint_4">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="motor_4">
-            <hardwareInterface>PositionJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-
-
-    <!-- Gazebo Configuration section -->
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/arduinobot</robotNamespace>
-            <robotSimType>gazbo_roscontrol/DefaultRobotHWSim</robotSimType>
-        </plugin>
-    </gazebo>
-    
 
 </robot>
