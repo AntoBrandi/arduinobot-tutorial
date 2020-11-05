@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ubuntu/arduinobot-tutorial/L6-Robot-Arm-Inverse-Kinematic/arduinobot_ws/install/setup.sh
