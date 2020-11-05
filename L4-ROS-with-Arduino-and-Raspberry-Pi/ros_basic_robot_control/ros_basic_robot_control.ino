@@ -8,7 +8,7 @@
 
 #include <Servo.h>
 #include <ros.h>
-#include <geometry_msgs/Vector3.h>
+#include <std_msgs/UInt8MultiArray.h>
 #include <std_msgs/Int16.h>
 
 // Declare the Arduino pin where each servo is connected
@@ -16,6 +16,11 @@
 #define SERVO_SHOULDER_PIN 9
 #define SERVO_ELBOW_PIN 10
 #define SERVO_GRIPPER_PIN 11
+
+// Define the working range for each joint
+#define MIN_RANGE 0
+#define MIN_RANGE_GRIPPER 40
+#define MAX_RANGE 180
 
 // Register the servo motors of each joint
 Servo base;  
@@ -41,51 +46,51 @@ void reach_goal(Servo servo, int start_point, int end_point){
     for (int pos = start_point; pos <= end_point; pos += 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
     servo.write(pos);     
-    delay(15);                       
+    delay(5);                       
     }
   } else{
     for (int pos = start_point; pos >= end_point; pos -= 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
     servo.write(pos);     
-    delay(15);                       
+    delay(5);                       
     }
   }
 }
 
 
-void jointCb( const geometry_msgs::Vector3& msg){
-  // Move the base
-  if(msg.x>0 && msg.x<181){
-    int target = (int)msg.x;
-    reach_goal(base, last_angle_base, target);
-    last_angle_base = target;
-  }
-  
-  // Move the shoulder
-  if(msg.y>0 && msg.y<181){
-    int target = (int)msg.y;
-    reach_goal(shoulder, last_angle_shoulder, target);
-    last_angle_shoulder = target;
-  }
-
-  // Move the elbow
-  if(msg.x>0 && msg.x<181){
-    int target = (int)msg.z;
-    reach_goal(elbow, last_angle_elbow, target);
-    last_angle_elbow = target;
-  }
+void moveArm(int base_angle, int shoulder_angle, int elbow_angle, int gripper_angle){
+  reach_goal(base, last_angle_base, base_angle);
+  reach_goal(shoulder, last_angle_shoulder, shoulder_angle);
+  reach_goal(elbow, last_angle_elbow, elbow_angle);
+  reach_goal(gripper, last_angle_gripper, gripper_angle);
+  last_angle_base = base_angle;
+  last_angle_shoulder = shoulder_angle;
+  last_angle_elbow = elbow_angle;
+  last_angle_gripper = gripper_angle;
 }
 
-void gripperCb ( const std_msgs::Int16& msg){
-  if (msg.data>0 && msg.data<181){
-    int target = msg.data;
-    reach_goal(gripper, last_angle_gripper, target);
-    last_angle_gripper = target;
-  }
+
+void servoActuateCb( const std_msgs::UInt8MultiArray& msg){
+  int base_angle = (int)msg.data[0];
+  int shoulder_angle = (int)msg.data[1];
+  int elbow_angle = (int)msg.data[2];
+  int gripper_angle = (int)msg.data[3];
+
+  // check that the received data are bounded correctly
+  if(base_angle<MIN_RANGE) base_angle = MIN_RANGE;
+  if(shoulder_angle<MIN_RANGE) shoulder_angle = MIN_RANGE;
+  if(elbow_angle<MIN_RANGE) elbow_angle = MIN_RANGE;
+  if(gripper_angle<MIN_RANGE_GRIPPER) gripper_angle = MIN_RANGE_GRIPPER;
+
+  if(base_angle>MAX_RANGE) base_angle = MAX_RANGE;
+  if(shoulder_angle>MAX_RANGE) shoulder_angle = MAX_RANGE;
+  if(elbow_angle>MAX_RANGE) elbow_angle = MAX_RANGE;
+  if(gripper_angle>MAX_RANGE) gripper_angle = MAX_RANGE;
+
+  moveArm(base_angle, shoulder_angle, elbow_angle, gripper_angle);
 }
 
-ros::Subscriber<geometry_msgs::Vector3> sub_joint("servo_actuate", &jointCb );
-ros::Subscriber<std_msgs::Int16> sub_gripper("gripper_actuate", &gripperCb );
+ros::Subscriber<std_msgs::UInt8MultiArray> sub("servo_actuate", &servoActuateCb );
 
 
 void setup() {
@@ -104,8 +109,7 @@ void setup() {
    // Inizialize the ROS node on the Arduino
   nh.initNode();
   // Inform ROS that this node will subscribe to messages on a given topic
-  nh.subscribe(sub_joint);
-  nh.subscribe(sub_gripper);
+  nh.subscribe(sub);
 }
 
 void loop() {
