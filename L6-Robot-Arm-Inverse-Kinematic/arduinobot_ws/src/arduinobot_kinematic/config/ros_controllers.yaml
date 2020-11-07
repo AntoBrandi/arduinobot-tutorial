@@ -21,7 +21,7 @@ joint_state_controller:
   publish_rate: 50
 controller_list:
   []
-arm_position_controller:
+ar_position_controller:
   type: position_controllers/JointPositionController
   joints:
     - joint_1

@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/arduinobot.srdf
   CONFIG:
-    author_name: Antonio Brandi
+    author_name: antonio brandi
     author_email: antonio.brandi@outlook.it
-    generated_timestamp: 1604591583
+    generated_timestamp: 1604763427

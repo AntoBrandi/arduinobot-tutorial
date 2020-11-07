@@ -146,7 +146,7 @@ arduinobot_arm:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-hand:
+arduinobot_gripper:
   default_planner_config: None
   planner_configs:
     - SBL

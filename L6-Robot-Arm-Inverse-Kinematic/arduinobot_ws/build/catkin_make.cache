@@ -1,2 +1,0 @@
-arduinobot_controller:arduinobot_description:arduinobot_kinematic:arduinobot_test
--DCATKIN_DEVEL_PREFIX=/home/ubuntu/arduinobot-tutorial/L6-Robot-Arm-Inverse-Kinematic/arduinobot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/arduinobot-tutorial/L6-Robot-Arm-Inverse-Kinematic/arduinobot_ws/install -G Unix Makefiles
