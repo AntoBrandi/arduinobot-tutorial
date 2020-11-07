@@ -63,12 +63,12 @@ void reach_goal(Servo servo, int start_point, int end_point){
  */
 void move(int joint, int target){
   switch(joint){
-    case 1:
+    case 1: // if (joint==1)
       Serial.println("Moving base");
       reach_goal(base, last_angle_base, target);
       last_angle_base = target;
       break;
-    case 2:
+    case 2: // else if (joint==1)
       Serial.println("Moving shoulder");
       reach_goal(shoulder, last_angle_shoulder, target);
       last_angle_shoulder = target;
