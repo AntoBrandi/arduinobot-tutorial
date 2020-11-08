@@ -1,7 +1,7 @@
 import roslibpy
 
 MESSENGER_TOPIC = "jarvis_messenger"
-MESSENGER_TYPE = "sd_msgs/String"
+MESSENGER_TYPE = "std_msgs/String"
 
 
 class Messenger:
@@ -9,4 +9,4 @@ class Messenger:
     def __init__(self, ros):
         print("Insert a message for the robot")
         message = input()
-        ros.publish(MESSENGER_TOPIC, MESSENGER_TYPE, roslibpy.Message({'data': message}))
+        ros.publish(MESSENGER_TOPIC, roslibpy.Message({'data': message}))

@@ -1,5 +1,6 @@
 from ros_interface import RosInterface
 from messenger import Messenger
+from controller import Controller
 
 ros = RosInterface()
 
@@ -16,7 +17,7 @@ if __name__ == "__main__":
             if selected_task == 1:
                 Messenger(ros)
             elif selected_task == 2:
-                pass
+                Controller(ros)
             else:
                 print("Invalid Input")
         except ValueError:
