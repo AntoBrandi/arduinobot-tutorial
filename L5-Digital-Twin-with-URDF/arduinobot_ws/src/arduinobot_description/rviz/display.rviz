@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /RobotModel1/Status1
+        - /Status1
       Splitter Ratio: 0.3513513505458832
     Tree Height: 617
   - Class: rviz/Selection
@@ -101,10 +101,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -132,32 +128,29 @@ Visualization Manager:
           Value: true
         tool_link:
           Value: true
-        world:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          base_link:
-            base_plate:
-              forward_drive_arm:
-                horizontal_arm:
-                  claw_support:
-                    gripper_left:
+        base_link:
+          base_plate:
+            forward_drive_arm:
+              horizontal_arm:
+                claw_support:
+                  gripper_left:
+                    {}
+                  gripper_right:
+                    tool_link:
                       {}
-                    gripper_right:
-                      tool_link:
-                        {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -196,10 +189,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.44039809703826904
+      Pitch: 0.25539809465408325
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9453977346420288
+      Yaw: 0.810397744178772
     Saved: ~
 Window Geometry:
   Displays:
@@ -218,4 +211,4 @@ Window Geometry:
     collapsed: false
   Width: 1293
   X: 349
-  Y: 30
+  Y: 27
