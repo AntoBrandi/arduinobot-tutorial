@@ -1,2 +1,4 @@
 **/arduinobot_ws/devel
 **/arduinobot_ws/build
+**/remote/__pycache__
+**/remote/.idea
